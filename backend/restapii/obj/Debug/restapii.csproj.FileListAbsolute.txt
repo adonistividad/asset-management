@@ -524,3 +524,4 @@ J:\mazrui\asset-management\backend\restapii\bin\Microsoft.Owin.Security.Microsof
 J:\mazrui\asset-management\backend\restapii\bin\System.Web.Http.Owin.xml
 J:\mazrui\asset-management\backend\restapii\obj\Debug\restapii.dll
 J:\mazrui\asset-management\backend\restapii\obj\Debug\restapii.pdb
+J:\mazrui\asset-management\backend\restapii\obj\Debug\restapii.csprojResolveAssemblyReference.cache
