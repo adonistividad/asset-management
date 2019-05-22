@@ -7,6 +7,8 @@ Vue.js version 2.6.10 (FrontEnd) and Visual C#/Asp.net version 2013 (BackEnd)
 Git clone from https://github.com/avtividad/asset-management.git
 
  
+ Go to frontend directory and simply double-click on “index.html” to run application
+
 
 ## Sample Data
 
