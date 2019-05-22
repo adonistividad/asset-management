@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="RestApiiContext-Web.config Connection String" description="RestApiiContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=localhost;Initial Catalog=restapii2DB;User Id=sa;Password=sa;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="J:\\mazrui\\mazrui-restapii\\restapii\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='RestApiiContext']/@connectionString" />
+  </parameter>
+  <parameter name="RestApiiContext_DatabasePublish-Web.config Connection String" description="RestApiiContext_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="RestApiiContext_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="J:\\mazrui\\mazrui-restapii\\restapii\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='RestApiiContext_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>
