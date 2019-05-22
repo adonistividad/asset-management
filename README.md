@@ -8,3 +8,6 @@ Git clone from https://github.com/avtividad/asset-management.git
 
  
 
+## Sample Data
+
+[Rest Api data](https://www.restapii.xyz/api/assets)
