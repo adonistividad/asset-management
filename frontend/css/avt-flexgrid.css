@@ -1,0 +1,120 @@
+.grid{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+
+
+.grid--hide{display:none;}
+
+/*.grid-cell { flex: 1em 0 0 1em; }*/
+.grid--column { -webkit-flex-flow: column wrap; flex-flow: column wrap;	 }
+
+.grid--fit { 
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	width: 100%;               /* For old syntax, otherwise collapses. */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1; 
+}
+.grid--full { flex: 0 0 100%; width:100%; }
+.grid--1-2 { flex: 0 0 50%; width:50%;}
+.grid--1-3 { flex: 0 0 33.3%; width:33.3%;}
+.grid--2-3 { flex: 0 0 66.6%; width:66.6%;}
+.grid--1-4 { flex: 0 0 25%; width:25%;}
+.grid--1-5 { flex: 0 0 19%; width:19%;}
+.grid--1-6 { flex: 0 0 16%; width:16%;}
+
+/***  responsive grid ***/
+.rgrid--1-2, .rgrid--1-3, .rgrid--2-3, 
+.rgrid--1-4 ,.rgrid--1-5, .rgrid--1-6 {
+	-webkit-flex: 1;
+	width:100%;
+	flex: 0 0 100%;
+}
+/* .fgrid--1-4 { flex: 0 0 100%; } */
+
+/* Alignment per row */
+.grid--top { align-items: flex-start; -webkit-align-items: flex-start;}
+.grid--bottom { align-items: flex-end; -webkit-align-items: flex-end;   }
+.grid--center { align-items: center; -webkit-align-items: center;   }
+.grid--right { margin-left: auto; }
+
+/* Alignment per cell */
+.grid-cell--top { align-self: flex-start; -webkit-align-self: flex-start; }
+.grid-cell--bottom { align-self: flex-end; -webkit-align-self: flex-end; }
+.grid-cell--center { align-self: center; -webkit-align-self: center;}
+.rgrid--fit { flex: 0 0 100%; }
+.grid--full-height{min-height:100vh;}
+
+/* Alignment per cell -- added functionality */
+.grid-cell--center-h { margin:0 auto; }
+/*-- center element inside its parent */
+.grid-cell--center-container { align-self: center; -webkit-align-self: center; margin:0 auto; }
+
+
+/* media for responsive design */
+/*@media all and (min-width: 480px) {*/
+@media all and (min-width: 640px) {
+	.grid {
+		display: -webkit-box;
+		display: -ms-Flexbox;
+		-ms-box-orient: horizontal;
+
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: flex;
+
+		x-webkit-flex-flow: row wrap;
+		-moz-flex-flow: row wrap;
+		-ms-flex-flow: row wrap;
+		flex-flow: row wrap;
+	}
+	
+	 
+	.rgrid--1-2 { flex: 0 0 50%; width:50%;}
+	.rgrid--1-3 { flex: 0 0 33.3%; width:33.3%;}
+	.rgrid--2-3 { flex: 0 0 66.6%; width:66.6%;}
+	.rgrid--1-4 { flex: 0 0 50%; -webkit-flex: 1 1 50%; width:50%;}
+	.rgrid--1-5 { flex: 0 0 19%; width:19%;}
+	.rgrid--1-6 { flex: 0 0 16%; width:16%;}
+	.rgrid--fit { flex: 1; -webkit-flex: 1; }
+	/* .fgrid--1-4 { flex: 0 0 25%; } */
+}
+@media all and (min-width: 800px) {
+	.rgrid--1-4 { flex: 0 0 25%; width:25%; }
+	
+}
+ .side-bar-right { max-width:360px; margin-left:auto;}
+ .side-bar-right i {margin-top:20px;}
+ 
+ 
+ 
+ div.flex {
+	 width:100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+div.flex .item {
+     -webkit-flex: 1 1 100%;
+	width:100%;
+   flex: 0 0 100%;
+}
+@media all and (min-width: 480px) {
+	
+	div.flex .item {
+		display:inline-block;
+    width: 25%;
+	 -webkit-flex: 1;
+    flex: 0 0 25%;
+}
+}

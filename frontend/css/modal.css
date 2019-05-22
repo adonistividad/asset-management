@@ -1,0 +1,98 @@
+.modal {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #888;
+    background: rgba(0, 0, 0, .5);
+    overflow: scroll;
+    font-size: 14px;
+    z-index: 999999 !important;
+}
+
+.modal h2, .modal label {
+    color: #333
+}
+
+.modal-dialog {
+    position: relative;
+    width: 90%;
+    max-width: 800px !important;
+    margin: 0 auto;
+    background: #fafafa;
+    margin-top: 10% !important;
+}
+
+.modal-content {
+    padding: 0 20px
+}
+
+.modal-title {
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+    text-align: center
+}
+
+.btn-submit {
+    color: #fff;
+    font-size: 13px;
+    padding: 15px 40px;
+    border: 1px solid;
+    border-radius: 5px;
+    background: rgb(43, 88, 118);
+    cursor: pointer
+}
+
+.btn-submit:hover, .enroll-now:hover {
+    color: #5ba0d0
+}
+
+/* .signup .fa-close { */
+
+.modal .fa-close {
+    color: #fff;
+    background: #000;
+    position: absolute;
+    top: -10px;
+    z-index: 3;
+    right: -10px;
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    -webkit-box-shadow: -2px 2px 16px 0 rgba(0, 0, 0, .75);
+    -moz-box-shadow: -2px 2px 16px 0 rgba(0, 0, 0, .75);
+    box-shadow: -2px 2px 16px 0 rgba(0, 0, 0, .75);
+    text-align: center;
+    cursor: pointer
+}
+
+.modal-content .sub-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #555
+}
+
+.modal-content .sub-title-1, .modal-content b {
+    font-size: 13px;
+    font-weight: 700;
+    color: #555
+}
+
+.modal ol, .modal ul {
+    padding-left: 1em
+}
+
+.modal input, .modal select {
+    margin-bottom: 10px;
+    width: 80%;
+    padding: 5px;
+}
+
+.modal select {
+    width: 88%;
+}

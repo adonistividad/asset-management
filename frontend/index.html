@@ -1,0 +1,298 @@
+<!DOCTYPE HTML
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="author" content="Adonis Tividad" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>IT Asset Management - Mazrui International</title>
+
+  <!-- CSS for a flexible responsive layout -->
+  <link type="text/css" rel="stylesheet" href="css/avt-flexgrid.css">
+
+  <!-- CSS for displaying modal dialog box -->
+  <link type='text/css' rel='stylesheet' href='css/modal.css' />
+
+  <!-- CSS for font-awesome icons -->
+  <link type='text/css' rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+  <style>
+    body,
+    html {
+      padding: 0;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #root {
+      padding: 20px;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    tr:hover {
+      opacity: .8;
+    }
+
+    .assetList a {
+      cursor: pointer;
+    }
+
+    button {
+      color: #fff;
+      background: #4683ea;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root" v-cloak="v-cloak">
+
+    <p>
+      <!-- use router-link component for navigation. -->
+      <!-- specify the link by passing the `to` prop. -->
+      <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+      <!-- <router-link to="/products/2">Products detail</router-link> -->
+      <!-- <router-link to="/2/products">Products detail</router-link> -->
+      <!-- <router-link to="/products">Products</router-link>
+            <router-link to="/2/d">Products detail</router-link>
+            <router-link to="/about">About</router-link>
+             -->
+      <!-- <router-link to="Converse-Chuck-Taylor®-All-Star®-Core-Ox-4/d/">Products detail</router-link> -->
+    </p>
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+
+
+
+
+    <button @click="assetAdd">ADD NEW ASSET</button><br><br>
+    <table class="assetList">
+      <tr>
+        <th>Asset Id</th>
+        <th>Label</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>purchaseDate</th>
+        <th>currentOwner</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr v-for="asset in assets" @dblclick="assetEdit(asset)">
+        <td> {{ asset.assetId }}</td>
+        <td> {{ asset.assetLabel }}</td>
+        <td>{{ asset.assetDescription}}</td>
+        <td>{{ asset.assetType}}</td>
+        <td>{{ asset.assetStatus}}</td>
+
+         <!-- date format: MM/DD/YYYY -->
+        <td>{{ asset.purchaseDate | formatDate}}</td>
+        
+        <td>{{ asset.currentOwner}}</td>
+        <td @click="assetEdit(asset)"><a class="fa fa-edit"></a></td>
+        <td @click="assetDelete(asset.assetId)"><a class="fa fa-trash"></a></td>
+    </table>
+
+    <!-- Modal Dialog box | Pressing ESC key, hides the dialog    -->
+    <div class='modal' v-show="showModal" v-on:keyup.esc="showModal=false">
+      <div class='modal-dialog wide' role='document'>
+        <div class='modal-container'>
+          <div class='modal-header'>
+            <span class='fa fa-close modal-close' @click="showModal=false"></span>
+            <h2 class='modal-title'>{{(isEdit?"EDIT":"NEW")}} ASSET</h2>
+          </div>
+          <div class='modal-content grid'>
+            <div class="rgrid--1-4 ">Label:</div>
+            <div class="rgrid--1-4"><input v-model="assetCurrent.assetLabel" ref="focusLabel"></div>
+            <div class="rgrid--1-4 ">Description:</div>
+            <div class="rgrid--1-4"><input v-model="assetCurrent.assetDescription"></div>
+            <div class="rgrid--1-4 ">Type:</div>
+            <div class="rgrid--1-4">
+              <select v-model="assetCurrent.assetType">
+                <option disabled>Please select</option>
+                <option v-for="option in asset_types" :value="option">{{option}}</option>
+              </select>
+            </div>
+            <div class="rgrid--1-4 ">Status:</div>
+            <div class="rgrid--1-4">
+              <select v-model="assetCurrent.assetStatus">
+                <option disabled>Please select</option>
+                <option v-for="option in asset_status" :value="option">{{option}}</option>
+              </select>
+
+            </div>
+            <div class="rgrid--1-4 ">Purchase Date:</div>
+            <div class="rgrid--1-4"><input type="date" v-model="assetCurrent.purchaseDate" xvalue="2013-01-08"
+                xvalue="dateFormatYYYY(assetCurrent.purchaseDate)"></div>
+            <div class="rgrid--1-4 ">Current Owner:</div>
+            <div class="rgrid--1-4"><input v-model="assetCurrent.currentOwner"></div>
+
+            <button @click="assetSave(assetCurrent)">SAVE</button>
+          </div>
+          <br><br>
+        </div>
+
+      </div>
+    </div>
+
+    <router-view></router-view>
+  </div>
+
+</body>
+
+</html>
+
+<!-- VueJs = progressive framework for building user interfaces -->
+<script src='https://npmcdn.com/vue@2.6.10/dist/vue.min.js'></script>
+
+<!-- Axios = a lightweight HTTP client based on the $http service and similar to the Fetch API. -->
+<script src='https://unpkg.com/axios@0.18.0/dist/axios.min.js'></script>
+
+<!-- Vue Router = Vue.js routing library core to make building Single Page Applications. -->
+<script src='https://unpkg.com/vue-router@3.0.6/dist/vue-router.js'></script>
+
+<!-- Vuex = state management pattern + library for Vue.js applications -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/2.1.1/vuex.min.js"></script>
+
+<!-- Date formatting -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+
+<script src="js/helpers.js?v0.01"></script>
+
+<!-- vuejs component -->
+<script src="js/home.js?v0.01"></script>
+
+<!-- global variables and functions  -->
+<script src="js/store.js?v0.01"></script>
+
+
+
+<script>
+
+  const routes = [
+    { path: '/', component: Home },
+    // { path: '/about', component: About },
+    // { path: '*', component: PageNotFound }
+  ]
+
+  const router = new VueRouter({
+    routes, // short for `routes: routes`
+    mode: 'history'  //-- remove hash '/#/' in url 
+  })
+
+  const app = new Vue({
+    //-- include ROUTES
+    router,
+
+    //-- include Vuex.Store via store.js
+    store,
+
+    //-- initialize variables
+    data: {
+      showModal: false,
+      isEdit: true,
+      assetCurrent: {},
+      asset_types: ['Laptop', 'Mobile', 'Tablet'],
+      asset_status: ['In-use', 'Available', 'In-repair'],
+    },
+    methods: {
+      assetAdd() {
+        this.assetCurrent = {};
+        this.showModal = true;
+        this.isEdit = false;
+
+        //-- set focus on input 'Label' [start]
+        let self = this;
+        Vue.nextTick().then(function () { self.$refs.focusLabel.focus(); });
+        //-- set focus on input 'Label' [end]
+
+      },
+      assetEdit(asset) {
+        //-- create a shallow copy, any objects within obj will be copied as references
+        this.assetCurrent = Object.assign({}, asset);
+
+        this.assetCurrent.purchaseDate = dateFormatYYYY(this.assetCurrent.purchaseDate);
+
+        this.showModal = true;
+        this.isEdit = true;
+
+        //-- set focus on input 'assetLabel' [start]
+        let self = this;
+        Vue.nextTick().then(function () { self.$refs.focusLabel.focus(); });
+        //-- set focus on input 'assetLabel' [end]
+
+      },
+      async assetDelete(assetId) {
+        if (confirm('Delete record number ' + assetId + '?')) {
+          //-- call DELETE action from store.js
+          this.$store.dispatch('assetDelete', { assetId: assetId })
+        }
+      },
+      async assetSave(asset) {
+        //-- call SAVE action from store.js
+        this.$store.dispatch('assetSave', { asset: asset });
+      },
+    },
+    computed: {
+      assets() {
+        return store.state.datAssets;
+      },
+    },
+    mounted() {
+      this.isDefault = true;
+
+      switch (store.state.MODULE) {
+
+        //-- for future use and module expansion
+        // case "HOME":
+        //   this.$store.dispatch('fetchAssets');
+        //   break;
+        default:
+          //initialize store data structure by submitting action.
+          this.$store.dispatch('fetchAssets');
+          break;
+
+      }
+    },
+  }).$mount('#root')
+
+  //-- date format: MM/DD/YYYY
+  Vue.filter('formatDate', function (value) {
+    if (value) {
+      return moment(String(value)).format('MM/DD/YYYY')
+    }
+  });
+
+  //-- date format: YYYY-MM-DD
+  function dateFormatYYYY(value) {
+    if (value) {
+      return moment(value).format('YYYY-MM-DD');
+    }
+  };
+
+
+</script>
