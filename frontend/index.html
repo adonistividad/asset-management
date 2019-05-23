@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
     <meta charset="utf-8" />
 
     <meta name="author" content="Adonis Tividad" />
@@ -79,124 +78,6 @@
                         <div class="rgrid--1-4 ">Type:</div>
                         <div class="rgrid--1-4">
                             <select v-model="assetCurrent.assetType">
-=======
-  <meta charset="utf-8" />
-
-  <meta name="author" content="Adonis Tividad" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <title>IT Asset Management - Mazrui International</title>
-
-  <!-- CSS for a flexible responsive layout -->
-  <link type="text/css" rel="stylesheet" href="css/avt-flexgrid.css">
-
-  <!-- CSS for displaying modal dialog box -->
-  <link type='text/css' rel='stylesheet' href='css/modal.css' />
-
-  <!-- CSS for font-awesome icons -->
-  <link type='text/css' rel='stylesheet'
-    href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-
-  <style>
-    body,
-    html {
-      padding: 0;
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    #root {
-      padding: 20px;
-    }
-
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td,
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-
-    tr:hover {
-      opacity: .8;
-    }
-
-    .assetList a {
-      cursor: pointer;
-    }
-
-    button {
-      color: #fff;
-      background: #4683ea;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .at-center {
-        text-align: center;
-    }
-  </style>
-</head>
-
-<body>
-  <h1 class="at-center">IT Asset Management</h1>
-
-  <div id="root" v-cloak="v-cloak">
-    <button @click="assetAdd">ADD NEW ASSET</button><br><br>
-    <table class="assetList">
-      <tr>
-        <th>Asset Id</th>
-        <th>Label</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Status</th>
-        <th>purchaseDate</th>
-        <th>currentOwner</th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr v-for="asset in assets" @dblclick="assetEdit(asset)">
-        <td> {{ asset.assetId }}</td>
-        <td> {{ asset.assetLabel }}</td>
-        <td>{{ asset.assetDescription}}</td>
-        <td>{{ asset.assetType}}</td>
-        <td>{{ asset.assetStatus}}</td>
-
-         <!-- date format: MM/DD/YYYY -->
-        <td>{{ asset.purchaseDate | formatDate}}</td>
-        
-        <td>{{ asset.currentOwner}}</td>
-        <td @click="assetEdit(asset)"><a class="fa fa-edit"></a></td>
-        <td @click="assetDelete(asset.assetId)"><a class="fa fa-trash"></a></td>
-    </table>
-
-    <!-- Modal Dialog box | Pressing ESC key, hides the dialog    -->
-    <div class='modal' v-show="showModal" v-on:keyup.esc="showModal=false">
-      <div class='modal-dialog wide' role='document'>
-        <div class='modal-container'>
-          <div class='modal-header'>
-            <span class='fa fa-close modal-close' @click="showModal=false"></span>
-            <h2 class='modal-title'>{{(isEdit?"EDIT":"NEW")}} ASSET</h2>
-          </div>
-          <div class='modal-content grid'>
-            <div class="rgrid--1-4 ">Label:</div>
-            <div class="rgrid--1-4"><input v-model="assetCurrent.assetLabel" ref="focusLabel"></div>
-            <div class="rgrid--1-4 ">Description:</div>
-            <div class="rgrid--1-4"><input v-model="assetCurrent.assetDescription"></div>
-            <div class="rgrid--1-4 ">Type:</div>
-            <div class="rgrid--1-4">
-              <select v-model="assetCurrent.assetType">
->>>>>>> d8c5dcc231eae72ece9a9abbd8d0038f44b44987
                 <option disabled>Please select</option>
                 <option v-for="option in asset_types" :value="option">{{option}}</option>
               </select>
@@ -359,7 +240,6 @@
         }
     });
 
-<<<<<<< HEAD
     //-- date format: YYYY-MM-DD
     function dateFormatYYYY(value) {
         if (value) {
@@ -367,6 +247,3 @@
         }
     };
 </script>
-=======
-</script>
->>>>>>> d8c5dcc231eae72ece9a9abbd8d0038f44b44987
