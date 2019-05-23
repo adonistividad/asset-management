@@ -32,7 +32,7 @@ namespace restapii2.Controllers
             finally { db.Dispose(); }
             return Json(new { assets });
         }
-
+          
 
         // GET: api/assets/5
         [EnableCors(origins: "*", headers: "*", methods: "*")]
