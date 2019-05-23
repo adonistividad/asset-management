@@ -42,4 +42,4 @@ Go to frontend directory and double-click on “index.html”
 ##### Edit mode
 ![alt tag](screenshots/screenshot-edit.JPG)
 
-   
+      
