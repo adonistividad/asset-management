@@ -11,9 +11,9 @@ Git clone from https://github.com/avtividad/asset-management.git
  
 ## Run the frontend app only ##
 
-Go to frontend directory and double-click on “index.localhost.html” 
+Go to frontend directory and double-click on “index.html” 
 
-## Sample Data
+### Sample Data
 
 [Rest Api data on the web](https://www.restapii.xyz/api/assets)
 
@@ -23,16 +23,22 @@ Go to frontend directory and double-click on “index.localhost.html”
 
 1. Go to “backend” directory and open “restapii2.sln”
 2. Modify the “connectionString” in web.config to point to your DB:
-    connectionString="Data Source=localhost;Initial Catalog=restapii2DB;User Id=sa;Password=sa;Integrated Security=True"
+    ##### connectionString="Data Source=localhost;Initial Catalog=restapii2DB;User Id=sa;Password=sa;Integrated Security=True"
 3. Build and run. 
+4. Go to “frontend” directory and double-click on “index.localhost.html” 
 
-## Sample Data
+### Sample Data
 
 [Rest Api data on localhost](http://localhost:33000/api/assets)
 
-### Minimum requirements: 
+#### Prerequisites: 
    * Visual Studio 2013 or later
    * MS SQL 2012 or later
 
+# Screenshots
+##### Assets List
+![alt tag](screenshots/screenshot-list.JPG)
 
+##### Edit mode
+![alt tag](screenshots/screenshot-edit.JPG)
 
