@@ -18,10 +18,18 @@ namespace restapii2.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public async Task<IHttpActionResult> Get()
         {
+            IEnumerable<tblAsset> assets = Enumerable.Empty<tblAsset>();
             RestApii2Context db = new RestApii2Context();
-            string sql = @"SELECT * FROM tblAsset ast WHERE ISNULL(deleted,0)=0";
-            IEnumerable<tblAsset> assets = db.Database.SqlQuery<tblAsset>(sql).ToList();
-
+            try
+            {
+                string sql = @"SELECT * FROM tblAsset ast WHERE ISNULL(deleted,0)=0";
+                assets = db.Database.SqlQuery<tblAsset>(sql).ToList();
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = ex.Message;
+            }
+            finally { db.Dispose(); }
             return Json(new { assets });
         }
 
@@ -31,9 +39,17 @@ namespace restapii2.Controllers
         public async Task<IHttpActionResult> Get(int id)
         {
             RestApii2Context db = new RestApii2Context();
-            string sql = @"SELECT * FROM tblAsset ast WHERE ISNULL(deleted,0)=0 AND assetId=" + id;
-            IEnumerable<tblAsset> assets = db.Database.SqlQuery<tblAsset>(sql).ToList();
-
+            IEnumerable<tblAsset> assets = Enumerable.Empty<tblAsset>();
+            try
+            {
+                string sql = @"SELECT * FROM tblAsset ast WHERE ISNULL(deleted,0)=0 AND assetId=" + id;
+                assets = db.Database.SqlQuery<tblAsset>(sql).ToList();
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = ex.Message;
+            }
+            finally { db.Dispose(); }
             return Json(new { assets });
         }
 
@@ -88,8 +104,16 @@ namespace restapii2.Controllers
         public async Task<IHttpActionResult> Delete(int id)
         {
             RestApii2Context db = new RestApii2Context();
-            string sql = @"UPDATE tblAsset SET deleted=1 WHERE assetId=" + id;
-            db.Database.ExecuteSqlCommand(sql);
+            try
+            {
+                string sql = @"UPDATE tblAsset SET deleted=1 WHERE assetId=" + id;
+                db.Database.ExecuteSqlCommand(sql);
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = ex.Message;
+            }
+            finally { db.Dispose(); }
             return await Get();
         }
 
@@ -116,12 +140,9 @@ namespace restapii2.Controllers
             }
             catch (Exception ex)
             {
-                string test = ex.Message;
+                string errorMessage = ex.Message;
             }
-            finally
-            {
-                db.Dispose();
-            }
+            finally { db.Dispose(); }
             return await Get();
         }
     }

@@ -12,6 +12,9 @@ namespace restapii2.Controllers
         {
             ViewBag.Title = "Home Page";
 
+            //-- create database and populate seed data
+            restapii2.Migrations.Configuration conf = new Migrations.Configuration();
+
             return View();
         }
     }

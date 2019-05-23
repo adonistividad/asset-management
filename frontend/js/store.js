@@ -1,5 +1,5 @@
-let url_current="https://restapii.xyz/";
-// let url_current = "http://localhost:33000/";
+// let url_current="https://restapii.xyz/";
+//let url_current = "http://localhost:33000/";
 
 const store = new Vuex.Store({
     state: {

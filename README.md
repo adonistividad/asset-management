@@ -1,16 +1,38 @@
 # I.T. Asset Management
 Asset Management demo project for an I.T. Company
 
-Technologies used: 
-Vue.js version 2.6.10 (FrontEnd), Visual C#/Asp.net version 2013 (BackEnd) and MS SQL 2016 (RDBMS)
+## Technologies used: 
+   * Front End  - Vue.js version 2.6.10
+   * Back End   - Visual C#/Asp.net version 2013
+   * RDBMS      - MS SQL 2016
 
 Git clone from https://github.com/avtividad/asset-management.git
 
  
- Go to frontend directory and simply double-click on “index.html” to run application
+## Run the frontend app only ##
 
+Go to frontend directory and double-click on “index.localhost.html” 
 
 ## Sample Data
 
-[Rest Api data](https://www.restapii.xyz/api/assets)
-   
+[Rest Api data on the web](https://www.restapii.xyz/api/assets)
+
+
+
+## Run the frontend + backend app  ##
+
+1. Go to “backend” directory and open “restapii2.sln”
+2. Modify the “connectionString” in web.config to point to your DB:
+    connectionString="Data Source=localhost;Initial Catalog=restapii2DB;User Id=sa;Password=sa;Integrated Security=True"
+3. Build and run. 
+
+## Sample Data
+
+[Rest Api data on localhost](http://localhost:33000/api/assets)
+
+### Minimum requirements: 
+   * Visual Studio 2013 or later
+   * MS SQL 2012 or later
+
+
+
