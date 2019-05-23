@@ -63,48 +63,7 @@ const store = new Vuex.Store({
                 app.showModal = false;
               })
         },
-
-
-
-        /*
-        saveInfo() {
-            var arrLatLng= [0, 0];
-            latLng=document.getElementById("latLng").innerText;
-            if(latLng!=""){
-                arrLatLng=latLng.replace(/[()]+/g, "").split(',');
-            }
-            
-            var geolocation=document.getElementById("geolocation").innerText;
-            if(this.info.addressType=='home'){
-                this.info.homeLocation=geolocation;
-                this.info.homeLat =parseFloat(arrLatLng[0]);
-                this.info.homeLng= parseFloat(arrLatLng[1]);
-            }else{
-                this.info.officeLocation=geolocation;
-                this.info.officeLat=parseFloat(arrLatLng[0]);
-                this.info.officeLng=parseFloat(arrLatLng[1]);
-            }
-
-            console.log('info', this.info);
-
-            axios.post(store.state.url + 'save/location',
-                    this.info)
-            .then((response) => {
-                //console.log('response.data: saveLocation', response.data)
-                if(location.href.toLowerCase().indexOf("checkout")<0){
-                    window.location = "/";
-                }else{
-                    location.reload();
-                }
-            })
-            .catch((error) => {
-                console.error(error)
-            });
-        },
-        
-        */ 
-        
-
+ 
     },
    
 
