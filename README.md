@@ -36,8 +36,8 @@ Go to frontend directory and double-click on “index.html”
    * MS SQL 2012 or later
 
 # Screenshots
-##### Assets List
+#### Assets List
 ![alt tag](screenshots/screenshot-list.JPG)
 
-##### Edit mode
+#### Edit mode
 ![alt tag](screenshots/screenshot-edit.JPG)
