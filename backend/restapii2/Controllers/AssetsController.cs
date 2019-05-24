@@ -30,6 +30,8 @@ namespace restapii2.Controllers
                 string errorMessage = ex.Message;
             }
             finally { db.Dispose(); }
+
+            //-- returns JSON data upon request
             return Json(new { assets });
         }
           
@@ -50,6 +52,8 @@ namespace restapii2.Controllers
                 string errorMessage = ex.Message;
             }
             finally { db.Dispose(); }
+
+            //-- returns JSON data upon request
             return Json(new { assets });
         }
 
